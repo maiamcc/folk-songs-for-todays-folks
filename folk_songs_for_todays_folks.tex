@@ -30,6 +30,9 @@
 \newcommand\chorus[1]{
   \customchorus{Chorus:}{#1}
 }
+\newcommand\chline[1]{
+  \quad\textit{#1}
+}
 
 %%% DOCUMENT FORMATTING
 \titleformat{\chapter}[display]{\normalfont\bfseries}{}{0pt}{\Huge}
@@ -73,9 +76,41 @@
 % un-suppress page numbers
 \pagenumbering{arabic}
 
+% TODO (maybe):
+% - Porpoise song??
+% - Use the Lever
+% - Mary Ellen Spider
+
+% BOOZIN' %
+\song{Boozin', Bloody Well Boozin'}{trad., add'l verses by folk world, Maia McCormick, Becca Mandel}
+What do you think I've been doing all day?\\
+\chline{Boozin', bloody well boozin'!}\\
+And how do you think I've been spending my pay?\\
+\chline{Boozin', bloody well boozin'!}\\
+Don't argue the point, 'cause you know I'm not right,\\
+Don't tell me I'm wrong, 'cause you know I can't fight.\\
+And what do you think we'll be doing tonight?\\
+\chline{Why, boozin', bloody well boozin'!}\\
+
+\chorus{
+  Boozin', boozin', just you and I.\\
+  Boozin', boozin', when we are dry.\\
+  Some do it openly, some on the sly,\\
+  But we all are bloody well boozin'!\\
+}
+
+What are the joys of a young married man?\\
+\chline{Boozin', bloody well boozin'!}\\
+What is he doing whenever he can?\\
+\chline{Boozin', bloody well boozin'!}\\
+He goes out a-shopping, makes many a call,\\
+Then he comes home at night and turns on the football;\\
+But what brings him home hanging onto the wall?\\
+\chline{Why, boozin', bloody well boozin'!}\\
+
 % GHOSTS OF ELLIS ISLAND %
 \begin{multicols}{2}[
-  \song{The Ghosts of Ellis Island}{by Jan P. Christensen, additional verses Nancy Pasley}
+  \song{The Ghosts of Ellis Island}{by Jan P. Christensen, add'l verses by Nancy Pasley}
 ]
 Oh my name is Juan and I came to this country\\
 On the boatlift from Mariel Bay.\\
@@ -162,11 +197,10 @@ I'd reach that airport in Jamaica Bay...\\
   Perhaps they'll let you stay
   In the land of the brave and the free.\\
 }
-
 \end{multicols}
 
 % ITCHES IN ME BRITCHES %
-\song{Itches In Me Britches}{trad. (after the Poxy Boggards' version)}
+\song{Itches In Me Britches}{trad. (after the Poxy Boggards' version), add'l verses by Maia McCormick}
 
 I was born of Geordie parents\\
 One day when I was young,\\
@@ -210,6 +244,19 @@ Duck me like a cow,\\
 Then they'd rub me nice all over,\\
 Well, I wish they'd do it now.\\
 
+% MAID OF AMSTERDAM%
+\song{Maid of Amsterdam (A-Rovin')}{trad. sea shanty, new version learned from Heather A. Wood}
+In Amsterdam there lived a maid,\\
+\chline{Mark well what I do say!}\\
+In Amsterdam there lived a maid\\
+And she was mistress of her trade.\\
+\chline{I'll go no more a-rovin' with you, fair maid!}\\
+
+\chorus{
+  A-rovin', a-rovin', since rovin's been my ru-i-in,\\
+  I'll go no more a-rovin' with you, fair maid!
+}
+
 % MARY HAD A LITTLE LAMB %
 \song{Mary Had a Little Lamb}{trad. (Civil War)}
 \chorus{
@@ -218,6 +265,52 @@ Well, I wish they'd do it now.\\
   And everywhere that Mary went the Lamb was sure to go,\\
   Shouting the battle cry of freedom!\\
 }
+
+% MY THING IS MY OWN %
+\song{My Thing Is My Own}{by Thomas d'Urfey (18th cen.), add'l verses by The Angels: Heroines in Disguise \& Maia McCormick}
+
+I, a tender young maid, have been courted by many\\
+Of all sorts and trades as ever were any.\\
+They flirted and wheedled and all had their say,\\
+But my choice is my own at the end of the day.\\
+
+\chorus{
+  My thing is my own and I'll keep it so still,\\
+  For every young lassie should do what she will;\\
+  My thing is my own and I'll keep it so still,\\
+  For every young lassie should do what she will.\\
+}
+
+A sweet scented Courtier did give me a kiss,\\
+And promis'd me mountains if I would be his,\\
+But I'd not believe him, for it is too true,\\
+Some courtiers do promise much more than they do.\\
+\\
+A Master of Musick came with intent\\
+To give me a lesson on my instrument.\\
+I thanked him for nothing and bid him be gone,\\
+For my little fiddle he will never play on.\\
+\\
+A blacksmith came courting, forge fires alight--\\
+If the iron is hot, he knows just when to strike. \\
+Alas he did catch me in a moment too cool,\\
+So I would not help him by quenching his tool.\\
+\\
+A pirate made bold in his enterprise,\\
+He presented a ship of considerable size:\\
+His vessel was trim, with rigging held fast,\\
+But I soundly refused to climb his top mast \\
+\\
+A dashing young poet came up from the strand,\\
+Seeking a muse with a quill in his hand.\\
+He began to declaim in a manner most gallant:\\
+His verses were fine, but his tongue had no talent \\
+\\
+Until one day I tried with the maid from next door,\\
+Her touch like no man's touch had e'er felt before.\\
+My answer to her as she lifted my dress,\\
+Unlike to the others, was resoundingly ``Yes!''\\
+
 
 % ONE SPECIES ARE WE %
 \song{One Species Are We (The Linnaeus Song)}{lyrics by Benedict Gagliardi, tune is ``Awake, Arise Good Christians''}
@@ -269,8 +362,11 @@ Let fear and hatred never \textit{trump} our consciousness again\\
 
 % TWO MAGICIANS %
 \begin{multicols}{2}[
-  \song{The Two Magicians (Bide, Lady, Bide)}{trad. (after The Maerlock's version)}
+  \song{The Two Magicians (Bide, Lady, Bide)}{trad. (after The Maerlock's version, ed. McCormick)}
 ]
+
+\textit{CW: stalking, attempted rape}\\
+\\
 The lady sits at her own front door\\
 As straight as a willow wand,\\
 When by her came a lusty smith\\
@@ -456,7 +552,7 @@ Sister's gonna kiss my red ruby lips,\\
 I don't need no man.\\
 
 % THE WIDOW AND THE DEVIL %
-\song{The Widow and the Devil}{by Mick Ryan (after The Poozies' version)}
+\song{The Widow and the Devil}{by Mick Ryan (after The Poozies' version), add'l verses Maia McCormick}
 
 \chorus{
   And the wind blew cold and lonely across that widow’s moore;\\
