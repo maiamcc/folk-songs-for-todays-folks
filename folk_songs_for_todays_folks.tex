@@ -4,6 +4,7 @@
 \usepackage{lmodern}%
 \usepackage{textcomp}%
 \usepackage{lastpage}%
+\usepackage{multicol}
 \usepackage[font=small,labelfont=it,labelformat=empty]{caption}
 \usepackage{titling}
 \newcommand{\subtitle}[1]{%
@@ -20,7 +21,6 @@
 \titlespacing*{\chapter}{0pt}{0pt}{10pt}
 \usepackage{hyperref}%
 \usepackage{graphicx}%
-% \graphicspath{ {./} }%
 
 \setulmarginsandblock{1.65cm}{1.65cm}{*}%
 \setlrmarginsandblock{1cm}{1cm}{*}%
@@ -37,30 +37,30 @@
 % \newcommand{\invisiblesection}[1]{\refstepcounter{section}\sectionmark{#1}\addcontentsline{toc}{section}{#1}}%
 
 \newcommand\song[2]{
-  \chapter[#1]{#1\\\large\itshape#2}
+  \chapter*[#1]{#1\\\large\itshape#2}
+  \addcontentsline{toc}{chapter}{#1}
 }
-\newcommand\chorusmarker[0]{
-	\Large\textit{\textbf{Chorus:}}\normalsize\\
+\newcommand\chorus[1]{
+	\Large\textit{\textbf{Chorus:}}\\\normalsize\textit{#1}
 }
 
 \pagenumbering{gobble}%
 \maketitle%
 
+\vspace*{\fill}
 \begin{figure}[h]
-\vspace{2.0cm}
 \centering
-\includegraphics[scale=1.2]{coverImg}
+\includegraphics[scale=1.4]{coverImg}
 \caption{by dynamitedesignsma on DeviantArt}
 \end{figure}
+\vspace*{\fill}
 
 \clearpage%
-\tableofcontents%
+\begin{KeepFromToc}
+  \tableofcontents
+\end{KeepFromToc}
 \clearpage%
 \pagenumbering{arabic}%
-
-% TODO:
-% - Ellis Island
-% - Boozin'
 
 % ITCHES IN ME BRITCHES %
 \song{Itches In Me Britches}{trad. (after the Poxy Boggards' version)}
@@ -73,12 +73,13 @@ That I was a pretty baby\\
 Me mother, she would vow;\\
 The girls all ran to kiss me then,\\
 I wish they'd do it now\\
-\\
-\chorusmarker
-Oh, I wish they'd do it now (2x)\\
-I've got itches in me britches\\
-And I wish they'd do it now\\
-\\
+
+\chorus{
+  Oh, I wish they'd do it now (2x)\\
+  I've got itches in me britches\\
+  And I wish they'd do it now\\
+}
+
 When I was only six months old\\
 The girls would handle me;\\
 They'd hug me to their bosom\\
@@ -108,27 +109,145 @@ Well, I wish they'd do it now.\\
 
 % MARY HAD A LITTLE LAMB %
 \song{Mary Had a Little Lamb}{trad. (Civil War)}
-\chorusmarker
-Hurrah for Mary, hurrah for the Lamb!\\
-Hurrah for the Union boys who did not give a damn!\\
-And everywhere that Mary went the Lamb was sure to go,\\
-Shouting the battle cry of freedom!\\
+\chorus{
+  Hurrah for Mary, hurrah for the Lamb!\\
+  Hurrah for the Union boys who did not give a damn!\\
+  And everywhere that Mary went the Lamb was sure to go,\\
+  Shouting the battle cry of freedom!\\
+}
+
+% ONE SPECIES ARE WE %
+\song{One Species Are We (The Linnaeus Song)}{lyrics by Benedict Gagliardi, tune is "Awake, Arise Good Christians"}
+
+Of three domains of all life, eukaryotes are we;\\
+Inside each cell within us, a nucleus there be.\\
+Bacteria, Archaea, unfortunate are they,\\
+They have no membrane bound around their strands of DNA.\\
+\\
+\chorus{
+  Linnaeus! Linnaeus! Here’s to your hierarchy,\\
+  And let it not betray us! One species are we!\\
+}
+
+Come all you motile metazoans and listen to my song:\\
+The kingdom Animalia is where we all belong.\\
+The plants may have their chlorophyll to photosynthesize,\\
+But animals are heterotrophs (and so are the Fungi).\\
+\\
+Our backbone gives us structure, our backbone gives us strength,\\
+So with the other chordates, we find our phylum rank.\\
+But let our boney ego never be unfurled,\\
+For the spineless worms and insects, they truly rule the world.\\
+\\
+By the milk our mothers gave us, by the hair upon our skin,\\
+It’s clear that we are mammals, class Mammalia we’re in.\\
+Most have a placenta, but this class has strange extremes\\
+Like the milky-pouched marsupials and egg-laying monotremes.\\
+\\
+So let’s put things in order, now that we’ve been to class;\\
+With monkeys, apes, prosimians, we, the primates, do amass.\\
+We all can be distinguished by our well-filled craniums,\\
+And the envy of all other life: two fine opposable thumbs\\
+\\
+Welcome to our family, all Great Apes are we:\\
+Orangutan, gorilla and our cousin chimpanzee.\\
+But if you believe that monkeys evolved into man,\\
+It seems you treat your own brain just like a garbage can.\\
+\\
+Homo is the genus of the African bipeds\\
+Who stood erect, and picked up tools, and learned to use their heads.\\
+Our cousins are extinct now, leaving only us,\\
+But thanks to our bad habits, we may join them soon enough\\
+\\
+So we are Homo sapiens, but let us not forget\\
+The reason we were given our specific epithet.\\
+We earned it for our wisdom, we earned it for our brain;\\
+Let fear and hatred never \textit{trump} our consciousness again\\
+
+% TWO MAGICIANS %
+\begin{multicols}{2}[
+  \song{The Two Magicians (Bide, Lady, Bide)}{trad. (after The Maerlock's version)}
+]
+The lady sits at her own front door\\
+As straight as a willow wand,\\
+And by there come a lusty smith\\
+With a hammer in his hand.\\
+\\
+"Well may you dress, you lady fair,\\
+All in your robes of red.\\
+Before tomorrow at this time\\
+I'll have you in my bed."\\
+
+\chorus{
+  And he said, "Bide lady, bide,\\
+  There's nowhere you can hide.\\
+  The husky smith will be your love\\
+  And that'll pull down your pride.\\
+}
+
+"Away, away, you lusty smith,\\
+What you do say is wrong;\\
+Do you really think a lass like me\\
+can be had for just a song?\\
+\\
+"I'd rather I was dead and cold\\
+And burried 'neath a tree\\
+Than a lusty dusty brute like you\\
+For to have your way with me!"\\
+\textit{And he said...}\\
+\\
+Then she became a turtle dove\\
+And flew up in the air,\\
+And he became an old cock pigeon\\
+And they flew pair and pair,\\
+\textit{Cooing "Bide, lady, bide"...}\\
+\\
+Then she turned into a bloomin' rose,\\
+A rose all in the wood, \\
+And he turned into a buzzing bee\\
+For to sting her where she stood,\\
+\textit{Buzzing...}\\
+\\
+Then she turned into a swift young mare\\
+As dark as the night was black,\\
+And he became a golden saddle\\
+And clung onto her back,\\
+\textit{Neighing...}\\
+\\
+\textbf{[Insert chase verses ad nauseum]}\\
+\\
+Then she turned into a sailing ship\\
+And aboard of her sprang he;\\
+So she turned into a little white duck\\
+And he sank under the sea.\\
+\\
+She left him there for dead below\\
+And swam to shore alone,\\
+Crying "Fie on you, you lusty smith,\\
+This body's still my own!\\
+\\
+"Though you said 'Bide, lady, bide,'\\
+I've no more need to hide,\\
+For the lusty smith was ne'er my love,\\
+For all his foolish pride."\\
+\end{multicols}
 
 % WALTZING WTIH BEARS %
-\song{Waltzing With Bears}{by Dr. Seuss (lyrics) \& Eugene Poddany (tune), folk processed by Priscilla Herdman and others}
+\song{Waltzing With Bears}{lyrics by Dr. Seuss, tune by Eugene Poddany, folk processed by Priscilla Herdman and others}
 
 I went to his room in the middle of the night,\\
 Crept to his side and I turned on the light,\\
 But to my surprise there was no one in sight,\\
 ‘Cause my Uncle Walter goes waltzing at night!\\
-\\
-\chorusmarker
-He goes wa-wa-wa wa-wa-wa-waltzing with bears.\\
-Raggy bears, shaggy bears, baggy bears too.\\
-And there's nothing on earth Uncle Walter won't do!\\
-So he can go waltzing, go wa-wa-wa-waltzing,\\
-So he can go waltzing, go waltzing with bears.\\
-\\
+
+\chorus{
+  He goes wa-wa-wa wa-wa-wa-waltzing with bears.\\
+  Raggy bears, shaggy bears, baggy bears too.\\
+  And there's nothing on earth Uncle Walter won't do!\\
+  So he can go waltzing, go wa-wa-wa-waltzing,\\
+  So he can go waltzing, go waltzing with bears.\\
+}
+
 We bought Uncle Walter a new suit to wear,\\
 But when he came home it was covered with hair,\\
 And lately I've noticed there's several new tears!\\
@@ -144,6 +263,45 @@ And managed to keep him at home for a day.\\
 But the bears all barged in and they took him away!\\
 Now he's dancing with pandas and he won’t understand us\\
 And the bears all demand at least one dance a day!\\
+
+% A WARNING TO WIZARDS%
+\song{A Warning to Wizards}{by Olivia Harding}
+A wizard is a helpful chap when one is in a pinch.\\
+For those men in their pointed caps solutions are a cinch.\\
+They'll lift their wand, their staffs they'll shake\\
+When things are getting rocky\\
+But lately they've been making mistakes,\\
+They're getting pretty cocky.\\
+
+\chorus{
+  Don't take out your wand unless someone wants to see it.\\
+  Don't stroke your staff unless it's got a job to do.\\
+  Keep your wand tucked away unless a lady says okay,\\
+  Don't reveal your magic until someone wants you to.\\
+}
+
+Gandalf was feeling good, he'd just become "the White".\\
+He called the Lady of the Wood for drinks at his one night.\\
+Did he press his staff to her thigh\\
+And show her his new strength? NO!\\
+(Galadriel did not want to spy\\
+His tower of Orthanc).\\
+\\
+Merlin had a crush on the Lady of the Lake;\\
+She made his heartbeat start to rush, his legs begin to shake.\\
+Did his wand spurt out fairy dust\\
+To make her call him "lord"? NO!\\
+He calmly offered to clean the rust\\
+From her favorite sword.\\
+\\
+A young man came to Dumbledore, feeling slightly blue.\\
+He said, staring at the floor, "I'm into wizards, too"\\
+Did Albus take the boy's wand in his hand\\
+And show him how it's done? NO!\\
+He listened to the (very) young man\\
+As if he were a son\\\\
+\Large
+\textit{\textbf{CHORUS (with "person" instead of "lady")}}\normalsize
 
 % WHO'S GONNA SHOE %
 \song{Who's Gonna Shoe Your Pretty Little Foot?}{trad., fixed by Sophia Donforth \& Emily Steele Hurst}
@@ -196,9 +354,11 @@ I don't need no man.\\
 
 % THE WIDOW AND THE DEVIL %
 \song{The Widow and the Devil}{by Mick Ryan (after The Poozies' version)}
-\chorusmarker
-And the wind blew cold and lonely across that widow’s moore;\\
-She never ever turned away a traveler from her door.
+
+\chorus{
+  And the wind blew cold and lonely across that widow’s moore;\\
+  She never ever turned away a traveler from her door.
+}
 
 \clearpage%
 \printindex%
