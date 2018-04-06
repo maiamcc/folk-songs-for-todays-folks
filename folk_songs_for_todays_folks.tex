@@ -23,8 +23,12 @@
   \chapter*[#1]{#1\\\large\itshape#2}
   \addcontentsline{toc}{chapter}{#1}
 }
+
+\newcommand\customchorus[2]{
+  \quad\Large\textit{\textbf{#1}}\\\normalsize\textit{#2}
+}
 \newcommand\chorus[1]{
-  \quad\Large\textit{\textbf{Chorus:}}\\\normalsize\textit{#1}
+  \customchorus{Chorus:}{#1}
 }
 
 %%% DOCUMENT FORMATTING
@@ -68,6 +72,98 @@
 
 % un-suppress page numbers
 \pagenumbering{arabic}
+
+% GHOSTS OF ELLIS ISLAND %
+\begin{multicols}{2}[
+  \song{The Ghosts of Ellis Island}{by Jan P. Christensen, additional verses Nancy Pasley}
+]
+Oh my name is Juan and I came to this country\\
+On the boatlift from Mariel Bay.\\
+As I walked around the streets of the city,\\
+I heard some people say:\\
+"Oh they all look funny and they don’t speak English,\\
+They’re taking our jobs away,"\\
+Then from out of the past\\
+I heard people who came\\
+To an island in New York Bay...\\
+
+\chorus{
+  Ellis Island!\\
+  Come down the gangplank, go through the door,\\
+  Stand on the long, long line.\\
+  "Do you have TB or a social disease?\\
+  Do your hands and your legs work fine?\\
+  Do you have some relative there on the shore\\
+  Who can vouch for your sanity?"\\
+  And if you make it through the day\\
+  They'll stamp your card and say:\\
+  "Welcome to the Land of the Free!"\\
+}
+
+Oh my name is Pat and I come from Killarney,\\
+Where I worked with both my hands,\\
+Then the crops they failed and the agent came,\\
+He threw me off of the land,\\
+So I crossed the ocean with my pack on my back,\\
+And I hope they will let me stay,\\
+Now the Old World is gone,\\
+I can see a new home\\
+From this island in New York Bay...\\
+\\
+Oh my name is Rivka and I come from Russia,\\
+Where I never knew luxury,\\
+Then the Cossacks came with their swords and their guns,\\
+They killed all my family,\\
+So I came here where people don’t live in fear,\\
+And I’ll sweat in your dress shops all day;\\
+Though I’m tattered and torn,\\
+I see dreams being born\\
+On this island in New York Bay...\\
+\\
+Oh my name is Guido and I come from Palermo,\\
+Where I laid the bricks all day,\\
+But I had a dream that was bigger than Palermo,\\
+And that’s why I sailed away.\\
+Now I’ll build your subways and I’ll climb your buildings,\\
+And I’ll save up all my pay,\\
+So that next year my wife\\
+And my children can come\\
+To this island in New York Bay...\\
+\\
+We are the ghosts of old Ellis Island,\\
+We have our tales to tell:\\
+Some left a good life to come over here,\\
+Some left a living hell.\\
+But we crossed the sea and we built this land,\\
+As you will in your very own way,\\
+And to you who have come,\\
+We all say "Welcome home!"\\
+From this island in New York Bay...\\
+\\
+Oh my name is Fatima, I come from Aleppo,\\
+I am a refugee;\\
+For the ISIS came with their guns and bombs,\\
+They killed all my family.\\
+So I made my application and went to all the interviews,\\
+Spent months and years in this way.\\
+Well I did my best to cope,\\
+I tried not to give up hope\\
+I'd reach that airport in Jamaica Bay...\\
+
+\customchorus{New chorus:}{
+  John F. Kennedy!\\
+  Come down the gangway, go through the door,\\
+  Where there's always a long long line.\\
+  "Are you an Islamist or a terrorist?\\
+  Is your ideology fine?\\
+  Do you have any sponsors here in this country\\
+  With financial responsibility?"\\
+  And if you make it through the day,\\
+  Perhaps they'll let you stay
+  In the land of the brave and the free.\\
+}
+
+\end{multicols}
 
 % ITCHES IN ME BRITCHES %
 \song{Itches In Me Britches}{trad. (after the Poxy Boggards' version)}
