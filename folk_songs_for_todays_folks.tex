@@ -19,6 +19,9 @@
 \titleformat{\chapter}[display]%
 {\normalfont\bfseries}{}{0pt}{\Huge}%
 \titlespacing*{\chapter}{0pt}{0pt}{10pt}
+
+\setlength{\parindent}{0pt}
+
 \usepackage{hyperref}%
 \usepackage{graphicx}%
 
@@ -41,7 +44,7 @@
   \addcontentsline{toc}{chapter}{#1}
 }
 \newcommand\chorus[1]{
-	\Large\textit{\textbf{Chorus:}}\\\normalsize\textit{#1}
+	\quad\Large\textit{\textbf{Chorus:}}\\\normalsize\textit{#1}
 }
 
 \pagenumbering{gobble}%
