@@ -1,55 +1,57 @@
 \documentclass[twoside,13pt,openany,letterpaper]{memoir}%
-\usepackage[T1]{fontenc}%
-\usepackage[utf8]{inputenc}%
-\usepackage{lmodern}%
-\usepackage{textcomp}%
-\usepackage{lastpage}%
-\usepackage{multicol}
+
 \usepackage[font=small,labelfont=it,labelformat=empty]{caption}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{lastpage}
+\usepackage{lmodern}
+\usepackage{multicol}
 \usepackage{titling}
+\usepackage{titlesec}
+
+%%% COMMANDS
+% for document title
 \newcommand{\subtitle}[1]{%
   \posttitle{%
     \par\end{center}
     \begin{center}\large#1\end{center}
     \vskip0.5em}%
 }
-%
-\usepackage[noprint,1to1]{booklet}%
-\usepackage{titlesec}%
-\titleformat{\chapter}[display]%
-{\normalfont\bfseries}{}{0pt}{\Huge}%
-\titlespacing*{\chapter}{0pt}{0pt}{10pt}
-
-\setlength{\parindent}{0pt}
-
-\usepackage{hyperref}%
-\usepackage{graphicx}%
-
-\setulmarginsandblock{1.65cm}{1.65cm}{*}%
-\setlrmarginsandblock{1cm}{1cm}{*}%
-\checkandfixthelayout%
-
-\renewcommand{\thesection}{\arabic{section}}%
-\title{Folk Songs for Today's Folks}%
-\subtitle{Selected Lyrics and Choruses}
-\author{compiled by Maia McCormick}%
-\date{\today}%
-%
-\begin{document}%
-\normalsize%
-% \newcommand{\invisiblesection}[1]{\refstepcounter{section}\sectionmark{#1}\addcontentsline{toc}{section}{#1}}%
 
 \newcommand\song[2]{
   \chapter*[#1]{#1\\\large\itshape#2}
   \addcontentsline{toc}{chapter}{#1}
 }
 \newcommand\chorus[1]{
-	\quad\Large\textit{\textbf{Chorus:}}\\\normalsize\textit{#1}
+  \quad\Large\textit{\textbf{Chorus:}}\\\normalsize\textit{#1}
 }
 
-\pagenumbering{gobble}%
-\maketitle%
+%%% DOCUMENT FORMATTING
+\titleformat{\chapter}[display]{\normalfont\bfseries}{}{0pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{0pt}{10pt}
 
+\setlength{\parindent}{0pt}
+
+\setulmarginsandblock{1.65cm}{1.65cm}{*}
+\setlrmarginsandblock{1cm}{1cm}{*}
+\checkandfixthelayout
+
+\normalsize
+
+\renewcommand{\thesection}{\arabic{section}}
+\title{Folk Songs for Today's Folks}
+\subtitle{Selected Lyrics and Choruses}
+\author{compiled by Maia McCormick}
+\date{\today}
+
+%%% THE DOCUMENT
+\begin{document}
+\pagenumbering{gobble}
+\maketitle
+
+% cover image
 \vspace*{\fill}
 \begin{figure}[h]
 \centering
@@ -57,13 +59,16 @@
 \caption{by dynamitedesignsma on DeviantArt}
 \end{figure}
 \vspace*{\fill}
+\clearpage
 
-\clearpage%
+% table of contents
 \begin{KeepFromToc}
   \tableofcontents
 \end{KeepFromToc}
-\clearpage%
-\pagenumbering{arabic}%
+\clearpage
+
+% un-suppress page numbers
+\pagenumbering{arabic}
 
 % ITCHES IN ME BRITCHES %
 \song{Itches In Me Britches}{trad. (after the Poxy Boggards' version)}
@@ -126,7 +131,7 @@ Of three domains of all life, eukaryotes are we;\\
 Inside each cell within us, a nucleus there be.\\
 Bacteria, Archaea, unfortunate are they,\\
 They have no membrane bound around their strands of DNA.\\
-\\
+
 \chorus{
   Linnaeus! Linnaeus! Here’s to your hierarchy,\\
   And let it not betray us! One species are we!\\
