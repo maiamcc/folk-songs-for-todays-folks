@@ -10,6 +10,31 @@
 \usepackage{titling}
 \usepackage{titlesec}
 
+%%% MAKE LINE BREAKS ACTUALLY DO LINE BREAKS
+\makeatletter
+
+% Shorter names would be kinda great…
+\newcommand*{\VerseIgnorePreviousLinebreak}{\@gobble\VerseIgnorePreviousLinebreak}
+\newcommand*{\VerseIgnoreNextLinebreak}{\@ifnextchar\VersePar\@gobble{}}
+
+\newcommand*{\VersePar}{%
+  \@ifnextchar\VerseIgnorePreviousLinebreak
+    {\@gobble}
+    {\par\leavevmode}%
+}
+
+% Adapted from egreg's answer to "Inserting automatic vertical space between
+% blocks when \obeylines is active", at
+% https://tex.stackexchange.com/a/107096/1425 -- Antal
+\newcommand*{\obeyverses}{%
+  \parindent=0pt
+  \obeylines
+  \begingroup\lccode`~=`\^^M
+  \lowercase{\endgroup\let~}\VersePar
+}
+
+\makeatother
+
 %%% COMMANDS
 % for document title
 \newcommand{\subtitle}[1]{%
@@ -24,8 +49,9 @@
   \addcontentsline{toc}{chapter}{#1}
 }
 
-\newcommand\customchorus[2]{
-  \quad\Large\textit{\textbf{#1}}\\\normalsize\textit{#2}
+\newcommand\customchorus[2]{%
+  \quad\textit{\textbf{\Large #1}}\\
+  \textit{\VerseIgnoreNextLinebreak#2\VerseIgnorePreviousLinebreak}%
 }
 \newcommand\chorus[1]{
   \customchorus{Chorus:}{#1}
@@ -37,8 +63,6 @@
 %%% DOCUMENT FORMATTING
 \titleformat{\chapter}[display]{\normalfont\bfseries}{}{0pt}{\Huge}
 \titlespacing*{\chapter}{0pt}{0pt}{10pt}
-
-\setlength{\parindent}{0pt}
 
 \setulmarginsandblock{1.65cm}{1.65cm}{*}
 \setlrmarginsandblock{1cm}{1cm}{*}
@@ -81,481 +105,494 @@
 % - Use the Lever
 % - Mary Ellen Spider
 
+% Make line breaks insert real line breaks.
+%
+% Another potential approach would be putting this in an environment, so:
+%
+%     \begin{song}{Title}{Author}
+%       Lyrics
+%       ...
+%     \end{song}
+%
+% This has the advantage that it doesn't mess with the line breaks in the whole
+% document.
+\obeyverses
+
 % BOOZIN' %
 \song{Boozin', Bloody Well Boozin'}{trad., add'l verses by folk world, Maia McCormick, Becca Mandel}
-What do you think I've been doing all day?\\
-\chline{Boozin', bloody well boozin'!}\\
-And how do you think I've been spending my pay?\\
-\chline{Boozin', bloody well boozin'!}\\
-Don't argue the point, 'cause you know I'm not right,\\
-Don't tell me I'm wrong, 'cause you know I can't fight.\\
-And what do you think we'll be doing tonight?\\
-\chline{Why, boozin', bloody well boozin'!}\\
+What do you think I've been doing all day?
+\chline{Boozin', bloody well boozin'!}
+And how do you think I've been spending my pay?
+\chline{Boozin', bloody well boozin'!}
+Don't argue the point, 'cause you know I'm not right,
+Don't tell me I'm wrong, 'cause you know I can't fight.
+And what do you think we'll be doing tonight?
+\chline{Why, boozin', bloody well boozin'!}
 
 \chorus{
-  Boozin', boozin', just you and I.\\
-  Boozin', boozin', when we are dry.\\
-  Some do it openly, some on the sly,\\
-  But we all are bloody well boozin'!\\
+  Boozin', boozin', just you and I.
+  Boozin', boozin', when we are dry.
+  Some do it openly, some on the sly,
+  But we all are bloody well boozin'!
 }
 
-What are the joys of a young married man?\\
-\chline{Boozin', bloody well boozin'!}\\
-What is he doing whenever he can?\\
-\chline{Boozin', bloody well boozin'!}\\
-He goes out a-shopping, makes many a call,\\
-Then he comes home at night and turns on the football;\\
-But what brings him home hanging onto the wall?\\
-\chline{Why, boozin', bloody well boozin'!}\\
+What are the joys of a young married man?
+\chline{Boozin', bloody well boozin'!}
+What is he doing whenever he can?
+\chline{Boozin', bloody well boozin'!}
+He goes out a-shopping, makes many a call,
+Then he comes home at night and turns on the football;
+But what brings him home hanging onto the wall?
+\chline{Why, boozin', bloody well boozin'!}
 
 % GHOSTS OF ELLIS ISLAND %
 \begin{multicols}{2}[
   \song{The Ghosts of Ellis Island}{by Jan P. Christensen, add'l verses by Nancy Pasley}
 ]
-Oh my name is Juan and I came to this country\\
-On the boatlift from Mariel Bay.\\
-As I walked around the streets of the city,\\
-I heard some people say:\\
-``Oh they all look funny and they don’t speak English,\\
-They’re taking our jobs away,''\\
-Then from out of the past\\
-I heard people who came\\
-To an island in New York Bay...\\
+Oh my name is Juan and I came to this country
+On the boatlift from Mariel Bay.
+As I walked around the streets of the city,
+I heard some people say:
+``Oh they all look funny and they don’t speak English,
+They’re taking our jobs away,''
+Then from out of the past
+I heard people who came
+To an island in New York Bay...
 
 \chorus{
-  Ellis Island!\\
-  Come down the gangplank, go through the door,\\
-  Stand on the long, long line.\\
-  ``Do you have TB or a social disease?\\
-  Do your hands and your legs work fine?\\
-  Do you have some relative there on the shore\\
-  Who can vouch for your sanity?''\\
-  And if you make it through the day\\
-  They'll stamp your card and say:\\
-  ``Welcome to the Land of the Free!''\\
+  Ellis Island!
+  Come down the gangplank, go through the door,
+  Stand on the long, long line.
+  ``Do you have TB or a social disease?
+  Do your hands and your legs work fine?
+  Do you have some relative there on the shore
+  Who can vouch for your sanity?''
+  And if you make it through the day
+  They'll stamp your card and say:
+  ``Welcome to the Land of the Free!''
 }
 
-Oh my name is Pat and I come from Killarney,\\
-Where I worked with both my hands,\\
-Then the crops they failed and the agent came,\\
-He threw me off of the land,\\
-So I crossed the ocean with my pack on my back,\\
-And I hope they will let me stay,\\
-Now the Old World is gone,\\
-I can see a new home\\
-From this island in New York Bay...\\
-\\
-Oh my name is Rivka and I come from Russia,\\
-Where I never knew luxury,\\
-Then the Cossacks came with their swords and their guns,\\
-They killed all my family,\\
-So I came here where people don’t live in fear,\\
-And I’ll sweat in your dress shops all day;\\
-Though I’m tattered and torn,\\
-I see dreams being born\\
-On this island in New York Bay...\\
-\\
-Oh my name is Guido and I come from Palermo,\\
-Where I laid the bricks all day,\\
-But I had a dream that was bigger than Palermo,\\
-And that’s why I sailed away.\\
-Now I’ll build your subways and I’ll climb your buildings,\\
-And I’ll save up all my pay,\\
-So that next year my wife\\
-And my children can come\\
-To this island in New York Bay...\\
-\\
-We are the ghosts of old Ellis Island,\\
-We have our tales to tell:\\
-Some left a good life to come over here,\\
-Some left a living hell.\\
-But we crossed the sea and we built this land,\\
-As you will in your very own way,\\
-And to you who have come,\\
-We all say ``Welcome home!''\\
-From this island in New York Bay...\\
-\\
-Oh my name is Fatima, I come from Aleppo,\\
-I am a refugee;\\
-For the ISIS came with their guns and bombs,\\
-They killed all my family.\\
-So I made my application and went to all the interviews,\\
-Spent months and years in this way.\\
-Well I did my best to cope,\\
-I tried not to give up hope\\
-I'd reach that airport in Jamaica Bay...\\
+Oh my name is Pat and I come from Killarney,
+Where I worked with both my hands,
+Then the crops they failed and the agent came,
+He threw me off of the land,
+So I crossed the ocean with my pack on my back,
+And I hope they will let me stay,
+Now the Old World is gone,
+I can see a new home
+From this island in New York Bay...
+
+Oh my name is Rivka and I come from Russia,
+Where I never knew luxury,
+Then the Cossacks came with their swords and their guns,
+They killed all my family,
+So I came here where people don’t live in fear,
+And I’ll sweat in your dress shops all day;
+Though I’m tattered and torn,
+I see dreams being born
+On this island in New York Bay...
+
+Oh my name is Guido and I come from Palermo,
+Where I laid the bricks all day,
+But I had a dream that was bigger than Palermo,
+And that’s why I sailed away.
+Now I’ll build your subways and I’ll climb your buildings,
+And I’ll save up all my pay,
+So that next year my wife
+And my children can come
+To this island in New York Bay...
+
+We are the ghosts of old Ellis Island,
+We have our tales to tell:
+Some left a good life to come over here,
+Some left a living hell.
+But we crossed the sea and we built this land,
+As you will in your very own way,
+And to you who have come,
+We all say ``Welcome home!''
+From this island in New York Bay...
+
+Oh my name is Fatima, I come from Aleppo,
+I am a refugee;
+For the ISIS came with their guns and bombs,
+They killed all my family.
+So I made my application and went to all the interviews,
+Spent months and years in this way.
+Well I did my best to cope,
+I tried not to give up hope
+I'd reach that airport in Jamaica Bay...
 
 \customchorus{New chorus:}{
-  John F. Kennedy!\\
-  Come down the gangway, go through the door,\\
-  Where there's always a long long line.\\
-  ``Are you an Islamist or a terrorist?\\
-  Is your ideology fine?\\
-  Do you have any sponsors here in this country\\
-  With financial responsibility?''\\
-  And if you make it through the day,\\
+  John F. Kennedy!
+  Come down the gangway, go through the door,
+  Where there's always a long long line.
+  ``Are you an Islamist or a terrorist?
+  Is your ideology fine?
+  Do you have any sponsors here in this country
+  With financial responsibility?''
+  And if you make it through the day,
   Perhaps they'll let you stay
-  In the land of the brave and the free.\\
+  In the land of the brave and the free.
 }
 \end{multicols}
 
 % ITCHES IN ME BRITCHES %
 \song{Itches In Me Britches}{trad. (after the Poxy Boggards' version), add'l verses by Maia McCormick}
 
-I was born of Geordie parents\\
-One day when I was young,\\
-That's how the Geordie dialect\\
-Became my native tongue.\\
-That I was a pretty baby\\
-Me mother, she would vow;\\
-The girls all ran to kiss me then,\\
-I wish they'd do it now\\
+I was born of Geordie parents
+One day when I was young,
+That's how the Geordie dialect
+Became my native tongue.
+That I was a pretty baby
+Me mother, she would vow;
+The girls all ran to kiss me then,
+I wish they'd do it now
 
 \chorus{
-  Oh, I wish they'd do it now (2x)\\
-  I've got itches in me britches\\
-  And I wish they'd do it now\\
+  Oh, I wish they'd do it now (2x)
+  I've got itches in me britches
+  And I wish they'd do it now
 }
 
-When I was only six months old\\
-The girls would handle me;\\
-They'd hug me to their bosom\\
-And they'd bounce me on their knee;\\
-They'd put me in the cradle,\\
-And if I made a row,\\
-They'd tickle me, they'd cuddle me,\\
-I wish they'd do it now\\
-\\
-At three years old a finer lad\\
-There never could be seen;\\
-The girls all loved to follow me\\
-Right down to the green.\\
-They'd make a chain of buttercups,\\
-Drop it on me brow,\\
-Then they'd roll me in the clover,\\
-Well, I wish they'd do it now\\
-\\
-The East End girls would call on me\\
-To swim when it was mild;\\
-They'd take me to the river\\
-For to splash about a while;\\
-They'd throw the water over me,\\
-Duck me like a cow,\\
-Then they'd rub me nice all over,\\
-Well, I wish they'd do it now.\\
+When I was only six months old
+The girls would handle me;
+They'd hug me to their bosom
+And they'd bounce me on their knee;
+They'd put me in the cradle,
+And if I made a row,
+They'd tickle me, they'd cuddle me,
+I wish they'd do it now
+
+At three years old a finer lad
+There never could be seen;
+The girls all loved to follow me
+Right down to the green.
+They'd make a chain of buttercups,
+Drop it on me brow,
+Then they'd roll me in the clover,
+Well, I wish they'd do it now
+
+The East End girls would call on me
+To swim when it was mild;
+They'd take me to the river
+For to splash about a while;
+They'd throw the water over me,
+Duck me like a cow,
+Then they'd rub me nice all over,
+Well, I wish they'd do it now.
 
 % MAID OF AMSTERDAM%
 \song{Maid of Amsterdam (A-Rovin')}{trad. sea shanty, new version learned from Heather A. Wood}
-In Amsterdam there lived a maid,\\
-\chline{Mark well what I do say!}\\
-In Amsterdam there lived a maid\\
-And she was mistress of her trade.\\
-\chline{I'll go no more a-rovin' with you, fair maid!}\\
+In Amsterdam there lived a maid,
+\chline{Mark well what I do say!}
+In Amsterdam there lived a maid
+And she was mistress of her trade.
+\chline{I'll go no more a-rovin' with you, fair maid!}
 
 \chorus{
-  A-rovin', a-rovin', since rovin's been my ru-i-in,\\
+  A-rovin', a-rovin', since rovin's been my ru-i-in,
   I'll go no more a-rovin' with you, fair maid!
 }
 
 % MARY HAD A LITTLE LAMB %
 \song{Mary Had a Little Lamb}{trad. (Civil War)}
 \chorus{
-  Hurrah for Mary, hurrah for the Lamb!\\
-  Hurrah for the Union boys who did not give a damn!\\
-  And everywhere that Mary went the Lamb was sure to go,\\
-  Shouting the battle cry of freedom!\\
+  Hurrah for Mary, hurrah for the Lamb!
+  Hurrah for the Union boys who did not give a damn!
+  And everywhere that Mary went the Lamb was sure to go,
+  Shouting the battle cry of freedom!
 }
 
 % MY THING IS MY OWN %
 \song{My Thing Is My Own}{by Thomas d'Urfey (18th cen.), add'l verses by The Angels: Heroines in Disguise \& Maia McCormick}
 
-I, a tender young maid, have been courted by many\\
-Of all sorts and trades as ever were any.\\
-They flirted and wheedled and all had their say,\\
-But my choice is my own at the end of the day.\\
+I, a tender young maid, have been courted by many
+Of all sorts and trades as ever were any.
+They flirted and wheedled and all had their say,
+But my choice is my own at the end of the day.
 
 \chorus{
-  My thing is my own and I'll keep it so still,\\
-  For every young lassie should do what she will;\\
-  My thing is my own and I'll keep it so still,\\
-  For every young lassie should do what she will.\\
+  My thing is my own and I'll keep it so still,
+  For every young lassie should do what she will;
+  My thing is my own and I'll keep it so still,
+  For every young lassie should do what she will.
 }
 
-A sweet scented Courtier did give me a kiss,\\
-And promis'd me mountains if I would be his,\\
-But I'd not believe him, for it is too true,\\
-Some courtiers do promise much more than they do.\\
-\\
-A Master of Musick came with intent\\
-To give me a lesson on my instrument.\\
-I thanked him for nothing and bid him be gone,\\
-For my little fiddle he will never play on.\\
-\\
-A blacksmith came courting, forge fires alight--\\
-If the iron is hot, he knows just when to strike. \\
-Alas he did catch me in a moment too cool,\\
-So I would not help him by quenching his tool.\\
-\\
-A pirate made bold in his enterprise,\\
-He presented a ship of considerable size:\\
-His vessel was trim, with rigging held fast,\\
-But I soundly refused to climb his top mast \\
-\\
-A dashing young poet came up from the strand,\\
-Seeking a muse with a quill in his hand.\\
-He began to declaim in a manner most gallant:\\
-His verses were fine, but his tongue had no talent \\
-\\
-Until one day I tried with the maid from next door,\\
-Her touch like no man's touch had e'er felt before.\\
-My answer to her as she lifted my dress,\\
-Unlike to the others, was resoundingly ``Yes!''\\
+A sweet scented Courtier did give me a kiss,
+And promis'd me mountains if I would be his,
+But I'd not believe him, for it is too true,
+Some courtiers do promise much more than they do.
+
+A Master of Musick came with intent
+To give me a lesson on my instrument.
+I thanked him for nothing and bid him be gone,
+For my little fiddle he will never play on.
+
+A blacksmith came courting, forge fires alight--
+If the iron is hot, he knows just when to strike. 
+Alas he did catch me in a moment too cool,
+So I would not help him by quenching his tool.
+
+A pirate made bold in his enterprise,
+He presented a ship of considerable size:
+His vessel was trim, with rigging held fast,
+But I soundly refused to climb his top mast 
+
+A dashing young poet came up from the strand,
+Seeking a muse with a quill in his hand.
+He began to declaim in a manner most gallant:
+His verses were fine, but his tongue had no talent 
+
+Until one day I tried with the maid from next door,
+Her touch like no man's touch had e'er felt before.
+My answer to her as she lifted my dress,
+Unlike to the others, was resoundingly ``Yes!''
 
 
 % ONE SPECIES ARE WE %
 \song{One Species Are We (The Linnaeus Song)}{lyrics by Benedict Gagliardi, tune is ``Awake, Arise Good Christians''}
 
-Of three domains of all life, eukaryotes are we;\\
-Inside each cell within us, a nucleus there be.\\
-Bacteria, Archaea, unfortunate are they,\\
-They have no membrane bound around their strands of DNA.\\
+Of three domains of all life, eukaryotes are we;
+Inside each cell within us, a nucleus there be.
+Bacteria, Archaea, unfortunate are they,
+They have no membrane bound around their strands of DNA.
 
 \chorus{
-  Linnaeus! Linnaeus! Here’s to your hierarchy,\\
-  And let it not betray us! One species are we!\\
+  Linnaeus! Linnaeus! Here’s to your hierarchy,
+  And let it not betray us! One species are we!
 }
 
-Come all you motile metazoans and listen to my song:\\
-The kingdom Animalia is where we all belong.\\
-The plants may have their chlorophyll to photosynthesize,\\
-But animals are heterotrophs (and so are the Fungi).\\
-\\
-Our backbone gives us structure, our backbone gives us strength,\\
-So with the other chordates, we find our phylum rank.\\
-But let our boney ego never be unfurled,\\
-For the spineless worms and insects, they truly rule the world.\\
-\\
-By the milk our mothers gave us, by the hair upon our skin,\\
-It’s clear that we are mammals, class Mammalia we’re in.\\
-Most have a placenta, but this class has strange extremes\\
-Like the milky-pouched marsupials and egg-laying monotremes.\\
-\\
-So let’s put things in order, now that we’ve been to class;\\
-With monkeys, apes, prosimians, we, the primates, do amass.\\
-We all can be distinguished by our well-filled craniums,\\
-And the envy of all other life: two fine opposable thumbs\\
-\\
-Welcome to our family, all Great Apes are we:\\
-Orangutan, gorilla and our cousin chimpanzee.\\
-But if you believe that monkeys evolved into man,\\
-It seems you treat your own brain just like a garbage can.\\
-\\
-Homo is the genus of the African bipeds\\
-Who stood erect, and picked up tools, and learned to use their heads.\\
-Our cousins are extinct now, leaving only us,\\
-But thanks to our bad habits, we may join them soon enough\\
-\\
-So we are Homo sapiens, but let us not forget\\
-The reason we were given our specific epithet.\\
-We earned it for our wisdom, we earned it for our brain;\\
-Let fear and hatred never \textit{trump} our consciousness again\\
+Come all you motile metazoans and listen to my song:
+The kingdom Animalia is where we all belong.
+The plants may have their chlorophyll to photosynthesize,
+But animals are heterotrophs (and so are the Fungi).
+
+Our backbone gives us structure, our backbone gives us strength,
+So with the other chordates, we find our phylum rank.
+But let our boney ego never be unfurled,
+For the spineless worms and insects, they truly rule the world.
+
+By the milk our mothers gave us, by the hair upon our skin,
+It’s clear that we are mammals, class Mammalia we’re in.
+Most have a placenta, but this class has strange extremes
+Like the milky-pouched marsupials and egg-laying monotremes.
+
+So let’s put things in order, now that we’ve been to class;
+With monkeys, apes, prosimians, we, the primates, do amass.
+We all can be distinguished by our well-filled craniums,
+And the envy of all other life: two fine opposable thumbs
+
+Welcome to our family, all Great Apes are we:
+Orangutan, gorilla and our cousin chimpanzee.
+But if you believe that monkeys evolved into man,
+It seems you treat your own brain just like a garbage can.
+
+Homo is the genus of the African bipeds
+Who stood erect, and picked up tools, and learned to use their heads.
+Our cousins are extinct now, leaving only us,
+But thanks to our bad habits, we may join them soon enough
+
+So we are Homo sapiens, but let us not forget
+The reason we were given our specific epithet.
+We earned it for our wisdom, we earned it for our brain;
+Let fear and hatred never \textit{trump} our consciousness again
 
 % TWO MAGICIANS %
 \begin{multicols}{2}[
   \song{The Two Magicians (Bide, Lady, Bide)}{trad. (after The Maerlock's version, ed. McCormick)}
 ]
 
-\textit{CW: stalking, attempted rape}\\
-\\
-The lady sits at her own front door\\
-As straight as a willow wand,\\
-When by her came a lusty smith\\
-With a hammer in his hand.\\
-\\
-``Well may sit, you lady fair,\\
-There in your robes of red.\\
-But come tomorrow at this time\\
-I'll have you in my bed.''\\
+\textit{CW: stalking, attempted rape}
+
+The lady sits at her own front door
+As straight as a willow wand,
+When by her came a lusty smith
+With a hammer in his hand.
+
+``Well may sit, you lady fair,
+There in your robes of red.
+But come tomorrow at this time
+I'll have you in my bed.''
 
 \chorus{
-  And he said, ``Bide lady, bide,\\
-  There's nowhere you can hide,\\
-  For the lusty smith will be your love\\
-  And he will lay your pride.''\\
+  And he said, ``Bide lady, bide,
+  There's nowhere you can hide,
+  For the lusty smith will be your love
+  And he will lay your pride.''
 }
 
-``Away, away, you lusty smith,\\
-What you do say is wrong;\\
-Do you really think a lass like me\\
-can be had for just a song?\\
-\\
-``I'd rather I was dead and cold\\
-And burried 'neath a tree\\
-Than a lusty dusty brute like you\\
-For to have your way with me!''\\
-\textit{And he said...}\\
-\\
-Then she became a turtle dove\\
-And flew up in the air,\\
-And he became an old cock pigeon\\
-And they flew pair and pair,\\
-\textit{Cooing ``Bide, lady, bide''...}\\
-\\
-Then she turned into a bloomin' rose,\\
-A rose all in the wood, \\
-And he turned into a buzzing bee\\
-For to sting her where she stood,\\
-\textit{Buzzing...}\\
-\\
-Then she turned into a swift young mare\\
-As dark as the night was black,\\
-And he became a golden saddle\\
-And clung onto her back,\\
-\textit{Neighing...}\\
-\\
-\textbf{[Insert chase verses ad nauseum]}\\
-\\
-Then she turned into a sailing ship\\
-And aboard of her sprang he;\\
-So she turned into a little white duck\\
-And he sank under the sea.\\
-\\
-She left him there for dead below\\
-And swam to shore alone,\\
-Crying ``Fie on you, you lusty smith,\\
-This body's still my own!\\
-\\
-``Though you said 'Bide, lady, bide,'\\
-I've no more need to hide,\\
-For the lusty smith was ne'er my love,\\
-For all his foolish pride.''\\
+``Away, away, you lusty smith,
+What you do say is wrong;
+Do you really think a lass like me
+can be had for just a song?
+
+``I'd rather I was dead and cold
+And burried 'neath a tree
+Than a lusty dusty brute like you
+For to have your way with me!''
+\textit{And he said...}
+
+Then she became a turtle dove
+And flew up in the air,
+And he became an old cock pigeon
+And they flew pair and pair,
+\textit{Cooing ``Bide, lady, bide''...}
+
+Then she turned into a bloomin' rose,
+A rose all in the wood, 
+And he turned into a buzzing bee
+For to sting her where she stood,
+\textit{Buzzing...}
+
+Then she turned into a swift young mare
+As dark as the night was black,
+And he became a golden saddle
+And clung onto her back,
+\textit{Neighing...}
+
+\textbf{[Insert chase verses ad nauseum]}
+
+Then she turned into a sailing ship
+And aboard of her sprang he;
+So she turned into a little white duck
+And he sank under the sea.
+
+She left him there for dead below
+And swam to shore alone,
+Crying ``Fie on you, you lusty smith,
+This body's still my own!
+
+``Though you said 'Bide, lady, bide,'
+I've no more need to hide,
+For the lusty smith was ne'er my love,
+For all his foolish pride.''
 \end{multicols}
 
 % WALTZING WTIH BEARS %
 \song{Waltzing With Bears}{lyrics by Dr. Seuss, tune by Eugene Poddany, folk processed by Priscilla Herdman and others}
 
-I went to his room in the middle of the night,\\
-Crept to his side and I turned on the light,\\
-But to my surprise there was no one in sight,\\
-‘Cause my Uncle Walter goes waltzing at night!\\
+I went to his room in the middle of the night,
+Crept to his side and I turned on the light,
+But to my surprise there was no one in sight,
+‘Cause my Uncle Walter goes waltzing at night!
 
 \chorus{
-  He goes wa-wa-wa wa-wa-wa-waltzing with bears.\\
-  Raggy bears, shaggy bears, baggy bears too.\\
-  And there's nothing on earth Uncle Walter won't do!\\
-  So he can go waltzing, go wa-wa-wa-waltzing,\\
-  So he can go waltzing, go waltzing with bears.\\
+  He goes wa-wa-wa wa-wa-wa-waltzing with bears.
+  Raggy bears, shaggy bears, baggy bears too.
+  And there's nothing on earth Uncle Walter won't do!
+  So he can go waltzing, go wa-wa-wa-waltzing,
+  So he can go waltzing, go waltzing with bears.
 }
 
-We bought Uncle Walter a new suit to wear,\\
-But when he came home it was covered with hair,\\
-And lately I've noticed there's several new tears!\\
-I’m afraid Uncle Walter's been waltzing with bears!\\
-\\
-We told Uncle Walter that he should be good,\\
-And do all the things that we said that he should,\\
-But I know that he'd rather be off in the woods!\\
-I'm afraid that we’ll lose Uncle Walter for good!\\
-\\
-We begged and we pleaded “Oh please won’t you stay?”\\
-And managed to keep him at home for a day.\\
-But the bears all barged in and they took him away!\\
-Now he's dancing with pandas and he won’t understand us\\
-And the bears all demand at least one dance a day!\\
+We bought Uncle Walter a new suit to wear,
+But when he came home it was covered with hair,
+And lately I've noticed there's several new tears!
+I’m afraid Uncle Walter's been waltzing with bears!
+
+We told Uncle Walter that he should be good,
+And do all the things that we said that he should,
+But I know that he'd rather be off in the woods!
+I'm afraid that we’ll lose Uncle Walter for good!
+
+We begged and we pleaded “Oh please won’t you stay?”
+And managed to keep him at home for a day.
+But the bears all barged in and they took him away!
+Now he's dancing with pandas and he won’t understand us
+And the bears all demand at least one dance a day!
 
 % A WARNING TO WIZARDS%
 \song{A Warning to Wizards}{by Olivia Harding}
-A wizard is a helpful chap when one is in a pinch.\\
-For those men in their pointed caps solutions are a cinch.\\
-They'll lift their wand, their staffs they'll shake\\
-When things are getting rocky\\
-But lately they've been making mistakes,\\
-They're getting pretty cocky.\\
+A wizard is a helpful chap when one is in a pinch.
+For those men in their pointed caps solutions are a cinch.
+They'll lift their wand, their staffs they'll shake
+When things are getting rocky
+But lately they've been making mistakes,
+They're getting pretty cocky.
 
 \chorus{
-  Don't take out your wand unless someone wants to see it.\\
-  Don't stroke your staff unless it's got a job to do.\\
-  Keep your wand tucked away unless a lady says okay,\\
-  Don't reveal your magic until someone wants you to.\\
+  Don't take out your wand unless someone wants to see it.
+  Don't stroke your staff unless it's got a job to do.
+  Keep your wand tucked away unless a lady says okay,
+  Don't reveal your magic until someone wants you to.
 }
 
-Gandalf was feeling good, he'd just become ``the White''.\\
-He called the Lady of the Wood for drinks at his one night.\\
-Did he press his staff to her thigh\\
-And show her his new strength? NO!\\
-(Galadriel did not want to spy\\
-His tower of Orthanc).\\
-\\
-Merlin had a crush on the Lady of the Lake;\\
-She made his heartbeat start to rush, his legs begin to shake.\\
-Did his wand spurt out fairy dust\\
-To make her call him ``Lord''? NO!\\
-He calmly offered to clean the rust\\
-From her favorite sword.\\
-\\
-A young man came to Dumbledore, feeling slightly blue.\\
-He said, staring at the floor, ``I'm into wizards, too.''\\
-Did Albus take the boy's wand in his hand\\
-And show him how it's done? NO!\\
-He listened to the (very) young man\\
-As if he were a son.\\
+Gandalf was feeling good, he'd just become ``the White''.
+He called the Lady of the Wood for drinks at his one night.
+Did he press his staff to her thigh
+And show her his new strength? NO!
+(Galadriel did not want to spy
+His tower of Orthanc).
+
+Merlin had a crush on the Lady of the Lake;
+She made his heartbeat start to rush, his legs begin to shake.
+Did his wand spurt out fairy dust
+To make her call him ``Lord''? NO!
+He calmly offered to clean the rust
+From her favorite sword.
+
+A young man came to Dumbledore, feeling slightly blue.
+He said, staring at the floor, ``I'm into wizards, too.''
+Did Albus take the boy's wand in his hand
+And show him how it's done? NO!
+He listened to the (very) young man
+As if he were a son.
 
 \customchorus{Chorus (with ``person'' instead of ``lady'')}{}
 
 % WHO'S GONNA SHOE %
 \song{Who's Gonna Shoe Your Pretty Little Foot?}{trad., fixed by Sophia Donforth \& Emily Steele Hurst}
 
-Who's gonna shoe your pretty little foot,\\
-who's gonna glove your hand,\\
-who's gonna kiss your red ruby lips,\\
-who's gonna be your man?\\
-\\
-Papa's gonna shoe my pretty little foot,\\
-Mama's gonna glove my hand,\\
-Sister's gonna kiss my red ruby lips,\\
-I don't need no man.\\
-\\
-I don't need no man (2x)\\
-Sister's gonna kiss my red ruby lips,\\
-I don't need no man.\\
-\\
-Who's gonna change the oil in your car,\\
-who's gonna kill those bugs,\\
-who's gonna walk you home late at night\\
-and see you don't get mugged?\\
-\\
-I'm gonna change the oil in my car,\\
-I'm gonna squish those bugs,\\
-I'll walk with defiance and I won't be afraid\\
-and I bet I won't get mugged.\\
-\\
-I don't need no man (2x)\\
-I'll walk with defiance and I won't be afraid,\\
-I don't need no man.\\
-\\
-Who's gonna fix my meals for me,\\
-who's gonna clean my house,\\
-who's gonna keep me sweet company,\\
-who's gonna be my mouse?\\
-\\
-You can learn to cook, you can learn to bake,\\
-you can clean your own damn house,\\
-you can talk yourself through your lonesomeness,\\
-I ain't no one's mouse.\\
-\\
-I ain't no one's mouse (2x)\\
-you can talk yourself through your lonesomeness\\
-I ain't no one's mouse.\\
-\\
-I don't need no man (2x)\\
-Sister's gonna kiss my red ruby lips,\\
-I don't need no man.\\
+Who's gonna shoe your pretty little foot,
+who's gonna glove your hand,
+who's gonna kiss your red ruby lips,
+who's gonna be your man?
+
+Papa's gonna shoe my pretty little foot,
+Mama's gonna glove my hand,
+Sister's gonna kiss my red ruby lips,
+I don't need no man.
+
+I don't need no man (2x)
+Sister's gonna kiss my red ruby lips,
+I don't need no man.
+
+Who's gonna change the oil in your car,
+who's gonna kill those bugs,
+who's gonna walk you home late at night
+and see you don't get mugged?
+
+I'm gonna change the oil in my car,
+I'm gonna squish those bugs,
+I'll walk with defiance and I won't be afraid
+and I bet I won't get mugged.
+
+I don't need no man (2x)
+I'll walk with defiance and I won't be afraid,
+I don't need no man.
+
+Who's gonna fix my meals for me,
+who's gonna clean my house,
+who's gonna keep me sweet company,
+who's gonna be my mouse?
+
+You can learn to cook, you can learn to bake,
+you can clean your own damn house,
+you can talk yourself through your lonesomeness,
+I ain't no one's mouse.
+
+I ain't no one's mouse (2x)
+you can talk yourself through your lonesomeness
+I ain't no one's mouse.
+
+I don't need no man (2x)
+Sister's gonna kiss my red ruby lips,
+I don't need no man.
 
 % THE WIDOW AND THE DEVIL %
 \song{The Widow and the Devil}{by Mick Ryan (after The Poozies' version), add'l verses Maia McCormick}
 
 \chorus{
-  And the wind blew cold and lonely across that widow’s moore;\\
+  And the wind blew cold and lonely across that widow’s moore;
   She never ever turned away a traveler from her door.
 }
 
