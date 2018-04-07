@@ -49,12 +49,9 @@
   \addcontentsline{toc}{chapter}{#1}
 }
 
-\newcommand\customchorus[2]{%
+\newcommand\chorus[2][Chorus:]{%
   \quad\textit{\textbf{\Large #1}}\\
   \textit{\VerseIgnoreNextLinebreak#2\VerseIgnorePreviousLinebreak}%
-}
-\newcommand\chorus[1]{
-  \customchorus{Chorus:}{#1}
 }
 \newcommand\chline[1]{
   \quad\textit{#1}
@@ -222,7 +219,7 @@ Well I did my best to cope,
 I tried not to give up hope
 I'd reach that airport in Jamaica Bay...
 
-\customchorus{New chorus:}{
+\chorus[New chorus:]{
   John F. Kennedy!
   Come down the gangway, go through the door,
   Where there's always a long long line.
@@ -537,7 +534,7 @@ And show him how it's done? NO!
 He listened to the (very) young man
 As if he were a son.
 
-\customchorus{Chorus (with ``person'' instead of ``lady'')}{}
+\chorus[Chorus (with ``person'' instead of ``lady'')]{}
 
 % WHO'S GONNA SHOE %
 \song{Who's Gonna Shoe Your Pretty Little Foot?}{trad., fixed by Sophia Donforth \& Emily Steele Hurst}
