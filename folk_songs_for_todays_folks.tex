@@ -45,16 +45,14 @@
 }
 
 \newcommand\song[2]{
-  \chapter*[#1]{#1\\\large\itshape#2}
+  \chapter*[#1]{#1}
+  \large\textit{\textbf{#2}}\normalsize
   \addcontentsline{toc}{chapter}{#1}
 }
 
-\newcommand\customchorus[2]{%
+\newcommand\chorus[2][Chorus:]{
   \quad\textit{\textbf{\Large #1}}\\
   \textit{\VerseIgnoreNextLinebreak#2\VerseIgnorePreviousLinebreak}%
-}
-\newcommand\chorus[1]{
-  \customchorus{Chorus:}{#1}
 }
 \newcommand\chline[1]{
   \quad\textit{#1}
@@ -73,7 +71,7 @@
 \renewcommand{\thesection}{\arabic{section}}
 \title{Folk Songs for Today's Folks}
 \subtitle{Selected Lyrics and Choruses}
-\author{compiled by Maia McCormick}
+\author{Compiled by Maia McCormick}
 \date{\today}
 
 %%% THE DOCUMENT
@@ -95,7 +93,6 @@
 \begin{KeepFromToc}
   \tableofcontents
 \end{KeepFromToc}
-\clearpage
 
 % un-suppress page numbers
 \pagenumbering{arabic}
@@ -119,7 +116,8 @@
 \obeyverses
 
 % BOOZIN' %
-\song{Boozin', Bloody Well Boozin'}{trad., add'l verses by folk world, Maia McCormick, Becca Mandel}
+\song{Boozin', Bloody Well Boozin'}{trad., add'l verses by Dallas Valley, Maia McCormick, Becca Mandel}
+
 What do you think I've been doing all day?
 \chline{Boozin', bloody well boozin'!}
 And how do you think I've been spending my pay?
@@ -146,9 +144,9 @@ But what brings him home hanging onto the wall?
 \chline{Why, boozin', bloody well boozin'!}
 
 % GHOSTS OF ELLIS ISLAND %
-\begin{multicols}{2}[
-  \song{The Ghosts of Ellis Island}{by Jan P. Christensen, add'l verses by Nancy Pasley}
-]
+\begin{multicols}{2}[%
+  \song{The Ghosts of Ellis Island}{by Jan P. Christensen, add'l verses by Nancy Pasley}%
+]%
 Oh my name is Juan and I came to this country
 On the boatlift from Mariel Bay.
 As I walked around the streets of the city,
@@ -222,7 +220,7 @@ Well I did my best to cope,
 I tried not to give up hope
 I'd reach that airport in Jamaica Bay...
 
-\customchorus{New chorus:}{
+\chorus[New chorus:]{
   John F. Kennedy!
   Come down the gangway, go through the door,
   Where there's always a long long line.
@@ -282,7 +280,8 @@ Then they'd rub me nice all over,
 Well, I wish they'd do it now.
 
 % MAID OF AMSTERDAM%
-\song{Maid of Amsterdam (A-Rovin')}{trad. sea shanty, new version learned from Heather A. Wood}
+\song{Maid of Amsterdam (A-Rovin')}{trad. sea shanty, new version learned from Heather Wood}
+
 In Amsterdam there lived a maid,
 \chline{Mark well what I do say!}
 In Amsterdam there lived a maid
@@ -292,15 +291,6 @@ And she was mistress of her trade.
 \chorus{
   A-rovin', a-rovin', since rovin's been my ru-i-in,
   I'll go no more a-rovin' with you, fair maid!
-}
-
-% MARY HAD A LITTLE LAMB %
-\song{Mary Had a Little Lamb}{trad. (Civil War)}
-\chorus{
-  Hurrah for Mary, hurrah for the Lamb!
-  Hurrah for the Union boys who did not give a damn!
-  And everywhere that Mary went the Lamb was sure to go,
-  Shouting the battle cry of freedom!
 }
 
 % MY THING IS MY OWN %
@@ -329,19 +319,19 @@ I thanked him for nothing and bid him be gone,
 For my little fiddle he will never play on.
 
 A blacksmith came courting, forge fires alight--
-If the iron is hot, he knows just when to strike. 
+If the iron is hot, he knows just when to strike.
 Alas he did catch me in a moment too cool,
 So I would not help him by quenching his tool.
 
 A pirate made bold in his enterprise,
 He presented a ship of considerable size:
 His vessel was trim, with rigging held fast,
-But I soundly refused to climb his top mast 
+But I soundly refused to climb his top mast
 
 A dashing young poet came up from the strand,
 Seeking a muse with a quill in his hand.
 He began to declaim in a manner most gallant:
-His verses were fine, but his tongue had no talent 
+His verses were fine, but his tongue had no talent
 
 Until one day I tried with the maid from next door,
 Her touch like no man's touch had e'er felt before.
@@ -350,7 +340,7 @@ Unlike to the others, was resoundingly ``Yes!''
 
 
 % ONE SPECIES ARE WE %
-\song{One Species Are We (The Linnaeus Song)}{lyrics by Benedict Gagliardi, tune is ``Awake, Arise Good Christians''}
+\song{One Species Are We (The Linnaeus Song)}{lyrics by Benedict Gagliardi (tune is ``Awake, Arise Good Christians'')}
 
 Of three domains of all life, eukaryotes are we;
 Inside each cell within us, a nucleus there be.
@@ -398,10 +388,9 @@ We earned it for our wisdom, we earned it for our brain;
 Let fear and hatred never \textit{trump} our consciousness again
 
 % TWO MAGICIANS %
-\begin{multicols}{2}[
-  \song{The Two Magicians (Bide, Lady, Bide)}{trad. (after The Maerlock's version, ed. McCormick)}
-]
-
+\begin{multicols}{2}[%
+  \song{The Two Magicians (Bide, Lady, Bide)}{trad. (after The Maerlock's version, ed. McCormick)}%
+]%
 \textit{CW: stalking, attempted rape}
 
 The lady sits at her own front door
@@ -439,7 +428,7 @@ And they flew pair and pair,
 \textit{Cooing ``Bide, lady, bide''...}
 
 Then she turned into a bloomin' rose,
-A rose all in the wood, 
+A rose all in the wood,
 And he turned into a buzzing bee
 For to sting her where she stood,
 \textit{Buzzing...}
@@ -469,7 +458,7 @@ For all his foolish pride.''
 \end{multicols}
 
 % WALTZING WTIH BEARS %
-\song{Waltzing With Bears}{lyrics by Dr. Seuss, tune by Eugene Poddany, folk processed by Priscilla Herdman and others}
+\song{Waltzing With Bears}{lyrics by Dr. Seuss, tune by Eugene Poddany, folk processed by Priscilla Herdman and others, add'l verses by Maia McCormick}
 
 I went to his room in the middle of the night,
 Crept to his side and I turned on the light,
@@ -502,7 +491,8 @@ And the bears all demand at least one dance a day!
 
 % A WARNING TO WIZARDS%
 \song{A Warning to Wizards}{by Olivia Harding}
-A wizard is a helpful chap when one is in a pinch.
+
+A wizard is a helpful chap when one is in a pinch;
 For those men in their pointed caps solutions are a cinch.
 They'll lift their wand, their staffs they'll shake
 When things are getting rocky
@@ -537,7 +527,7 @@ And show him how it's done? NO!
 He listened to the (very) young man
 As if he were a son.
 
-\customchorus{Chorus (with ``person'' instead of ``lady'')}{}
+\chorus[Chorus (with ``person'' instead of ``lady'')]{}
 
 % WHO'S GONNA SHOE %
 \song{Who's Gonna Shoe Your Pretty Little Foot?}{trad., fixed by Sophia Donforth \& Emily Steele Hurst}
