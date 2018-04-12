@@ -9,6 +9,7 @@
 \usepackage{multicol}
 \usepackage{titling}
 \usepackage{titlesec}
+\usepackage{tocloft}
 
 %%% MAKE LINE BREAKS ACTUALLY DO LINE BREAKS
 \makeatletter
@@ -61,6 +62,8 @@
 %%% DOCUMENT FORMATTING
 \titleformat{\chapter}[display]{\normalfont\bfseries}{}{0pt}{\Huge}
 \titlespacing*{\chapter}{0pt}{0pt}{10pt}
+
+\cftpagenumbersoff{section}
 
 \setulmarginsandblock{1.65cm}{1.65cm}{*}
 \setlrmarginsandblock{1cm}{1cm}{*}
@@ -573,6 +576,7 @@ I don't need no man.
 % MAID OF AMSTERDAM%
 \huge\textbf{Maid of Amsterdam (A-Rovin')}\vspace{10pt}
 \large\textit{\textbf{trad. sea shanty, new version learned from Heather Wood}}\normalsize
+\addcontentsline{toc}{section}{Maid of Amsterdam (A-Rovin')}
 
 In Amsterdam there lived a maid,
 \chline{Mark well what I do say!}
@@ -589,7 +593,7 @@ And she was mistress of her trade.
 % THE WIDOW AND THE DEVIL %
 \huge\textbf{The Widow and the Devil}\vspace{10pt}
 \large\textit{\textbf{by Mick Ryan (after The Poozies' version), add'l verses Maia McCormick}}\normalsize
-
+\addcontentsline{toc}{section}{The Widow and the Devil}
 \chorus{
   And the wind blew cold and lonely across that widow’s moore;
   She never ever turned away a traveler from her door.
