@@ -1,4 +1,4 @@
-\documentclass[twoside,19pt,openany,letterpaper]{memoir}%
+\documentclass[twoside,16pt,openany,letterpaper]{memoir}%
 
 \usepackage[font=small,labelfont=it,labelformat=empty]{caption}
 \usepackage[T1]{fontenc}
@@ -118,8 +118,12 @@
 % document.
 \obeyverses
 
+% TODO: smarter col breaks for multicol songs.
+
 % BOOZIN' %
-\song{Boozin', Bloody Well Boozin'}{trad., add'l verses by Dallas Valley, Maia McCormick, Becca Mandel}
+\begin{multicols}{2}[%
+  \song{Boozin', Bloody Well Boozin'}{trad., add'l verses by Dallas Valley, Maia McCormick, Becca Mandel}%
+]%
 
 What do you think I've been doing all day?
 \chline{Boozin', bloody well boozin'!}
@@ -145,6 +149,45 @@ He goes out a-shopping, makes many a call,
 Then he comes home at night and turns on the football;
 But what brings him home hanging onto the wall?
 \chline{Why, boozin', bloody well boozin'!}
+
+\\\\\\\\\\\\\\\\
+
+What are the joys of a tired young dad?
+\chline{Snoozin', bloody well snoozin'!}
+What does he do when the kids drive him mad?
+\chline{Snoozin', bloody well snoozin'!}
+He's up at all hours, he's walking about,
+He stays home at night when his friends have gone out;
+This is what happens when condoms run out!
+\chline{Why, snoozin', bloody well snoozin'!}
+
+% TODO: Fix quotes
+\chorus[Chorus (with ``snoozin''')]{}
+%
+What are the joys of the young folkie scene?
+\chline{Bluesin', bloody well bluesin'!}
+We all love to contra, but this is real keen!
+\chline{Bluesin', bloody well bluesin'!}
+We know that it's flirty, so if you take your chance,
+Know that ``no'' still means ``no'', both in sex and in dance,
+And please don't confuse blues for sex or romance,
+\chline{And use caution when mixing with boozin'!}
+
+% TODO: Fix quotes
+\chorus[Chorus (with ``bluesin''')]{}
+%
+What are the marks of a kinkster's delight?
+\chline{Bruisin', bloody well bruisin'!}
+And what are we doing on Saturday night?
+\chline{Bruisin', bloody well bruisin'!}
+It's all well and good when we're here in a scene:
+For ``stop'' you say ``red'' and for ``go'' you say ``green''.
+We're all really nice (unless you want us mean),
+\chline{And we all love bloody well bruisin'!}
+
+% TODO: Fix quotes
+\chorus[Chorus (with ``bruisin''')]{}
+\end{multicols}%
 
 % GHOSTS OF ELLIS ISLAND %
 \begin{multicols}{2}[%
@@ -235,10 +278,12 @@ I'd reach that airport in Jamaica Bay...
   Perhaps they'll let you stay
   In the land of the brave and the free.
 }
-\end{multicols}
+\end{multicols}%
 
 % ITCHES IN ME BRITCHES %
-\song{Itches In Me Britches}{trad. (after the Poxy Boggards' version), add'l verses by Maia McCormick}
+\begin{multicols}{2}[%
+  \song{Itches In Me Britches}{trad. (after the Poxy Boggards' version), add'l verses by Maia McCormick}
+]%
 
 I was born of Geordie parents
 One day when I was young,
@@ -264,6 +309,8 @@ And if I made a row,
 They'd tickle me, they'd cuddle me,
 I wish they'd do it now
 
+\\\\\\\\\\\\\\\\
+
 At three years old a finer lad
 There never could be seen;
 The girls all loved to follow me
@@ -281,6 +328,61 @@ They'd throw the water over me,
 Duck me like a cow,
 Then they'd rub me nice all over,
 Well, I wish they'd do it now.
+
+Well now who could have predicted
+Where my quest for girls has led?
+It all changed when I met Howard
+And I went with him to bed.
+He was gentle, he was skillful
+% well-endowed?
+(And he was quite well endowed);
+No more itches in me britches, friends,
+'Cause now I'm doin' Howe!
+
+\chorus[New chorus:]{
+  Oh, 'cause now I'm doin' Howe (2x)
+  No more itches in me britches, friends,
+  'Cause now I'm doin' Howe!
+}
+\end{multicols}%
+
+% MAID OF AMSTERDAM%
+\song{Maid of Amsterdam (A-Rovin')}{trad. sea shanty, new version learned from Heather Wood}
+
+In Amsterdam there lived a maid,
+\chline{Mark well what I do say!}
+In Amsterdam there lived a maid
+And she was mistress of her trade.
+\chline{I'll go no more a-rovin' with you, fair maid!}
+
+\chorus{
+  A-rovin', a-rovin', since rovin's been my ru-i-in,
+  I'll go no more a-rovin' with you, fair maid!
+}
+
+I took this fair maid for a walk
+\chline{Mark well what I do say!}
+I took this fair maid for a walk
+And we had such a lovin' talk.
+\chline{I'll go no more a-rovin' with you, fair maid!}
+
+I put my hand upon her toe,
+\chline{Mark well...}
+I put my hand upon her toe,
+Said she, ``Young man, don't go so slow!''
+\chline{I'll go no more...}
+
+I put my hand upon her calf...
+Said she, ``Sir, don't do things by half''...
+
+I put my hand upon her knee...
+Said she, ``You know, I don't come free''...
+
+I put my hand upon her thigh...
+Said she, ``Well now you're drawing nigh''...
+
+I put my hand upon her sex...
+And well, you prob'ly know what's next...
 
 % MY THING IS MY OWN %
 \song{My Thing Is My Own}{by Thomas d'Urfey (18th cen.), add'l verses by Maia McCormick \& The Angels: Heroines in Disguise}
@@ -409,11 +511,7 @@ Than a lusty dusty brute like you
 For to have your way with me!''
 \textit{And he said...}
 
-
-
-
-
-
+\\\\\\\\
 
 Then she became a turtle dove
 And flew up in the air,
@@ -482,6 +580,12 @@ And managed to keep him at home for a day.
 But the bears all barged in and they took him away!
 Now he's dancing with pandas and he won’t understand us
 And the bears all demand at least one dance a day!
+
+Well let me tell you that it was quite a feat
+To follow him out from the house to the street,
+But we know where he goes now and it's kinda' sweet:
+He does ballroom in leather on Christopher Street!
+% TODO: verse where I go waltzing, aunt matilda verse (maybe one where she's gay now).
 
 % A WARNING TO WIZARDS%
 \song{A Warning to Wizards}{by Olivia Harding}
@@ -572,34 +676,66 @@ I don't need no man (2x)
 Sister's gonna kiss my red ruby lips,
 I don't need no man.
 
-\song{Misc. Choruses}{}
-% MAID OF AMSTERDAM%
-\huge\textbf{Maid of Amsterdam (A-Rovin')}\vspace{10pt}
-\large\textit{\textbf{trad. sea shanty, new version learned from Heather Wood}}\normalsize
-\addcontentsline{toc}{section}{Maid of Amsterdam (A-Rovin')}
-
-In Amsterdam there lived a maid,
-\chline{Mark well what I do say!}
-In Amsterdam there lived a maid
-And she was mistress of her trade.
-\chline{I'll go no more a-rovin' with you, fair maid!}
-
-\chorus{
-  A-rovin', a-rovin', since rovin's been my ru-i-in,
-  I'll go no more a-rovin' with you, fair maid!
-}
-
-\vspace*{\fill}
 % THE WIDOW AND THE DEVIL %
-\huge\textbf{The Widow and the Devil}\vspace{10pt}
-\large\textit{\textbf{by Mick Ryan (after The Poozies' version), add'l verses Maia McCormick}}\normalsize
-\addcontentsline{toc}{section}{The Widow and the Devil}
+\begin{multicols}{2}[%
+  \song{The Widow and the Devil}{by Mick Ryan (after The Poozies' version), add'l verses Maia McCormick}%
+]%
+
+High upon a lonely moore a widow lived alone.
+An inn she kept, and as she slept, the pillow heard her moan:
+``Oh, many is the trav'ler who's spent the night with me,
+But there's not a man in all creation gives content to me.
+
+``Well some can manage once or twice, some make three or four.
+It seems to me a rarity is the man who can do more.
+I'd do anything to find him, in Heaven or in Hell!''
+And as these words were spoken, she heard the front doorbell.
+
 \chorus{
   And the wind blew cold and lonely across that widow’s moore;
   She never ever turned away a traveler from her door.
 }
-\vspace*{\fill}
 
-\clearpage%
-\printindex%
+So boldly then the widow ran and the door she opened wide,
+And as she did, a tall and handsome stranger stepped inside.
+She gave him bread and brandy, and when that he was fed,
+He said, ``My dear, now have no fear, it's time to come to bed.
+
+``I heard your call from down below; I've come to set you right,
+But you must come to Hell with me if I can last the night.''
+She said, ``You randy Devil! To this bargain I'll agree,
+For Hell on Earth or Hell in Hell, it's all the same to me.''
+
+\\\\\\\\
+
+Then they both fell into bed and the Devil was workin' well;
+He thought before the night was through, she'd be in his Hell.
+But when they came to number 9, the widow shouted, ``More!''
+And when the 12th came around, the widow cried, ``Encore!''
+
+At 32 the Devil felt compelled to take a rest.
+The widow said, ``Come raise your head and put me to the test.''
+At 96, the widow laughed. ``Again, again!'' she cried.
+The Devil gasped, ``Well I can see just how your husband died!''
+
+At 99 the Devil, he began to cry and weep.
+He said, ``I'll give you anything if you'll only let me sleep.''
+Before the morning light was up, the Devil hobbled home,
+And the widow, still not satisfied, once more was left alone.
+
+Alone again the widow lay and thought on 99.
+``If only that old Devil could have managed one more time.
+I'll call hum up again tonight and see what can be done;
+With a little more application, he could have made the ton.''
+
+But when she called to him that night, no Devil did appear;
+For the first time in eternity the Devil, he shook with fear.
+``Of all the fires and torments I've witnessed here in Hell,
+I never knew what pain was 'til I rang your front doorbell!''
+
+Well our story has an epilogue, so don't you go just yet.
+(And it has a happy ending too, so list'ners, don't you fret.)
+Our widow found another who could see her through the night:
+The dairy maid from down the road, she set our widow right!
+\end{multicols}%
 \end{document}
